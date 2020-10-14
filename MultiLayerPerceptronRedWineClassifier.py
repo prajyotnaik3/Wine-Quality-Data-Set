@@ -19,10 +19,10 @@ print(set(dataset['quality']))
 dataset['quality'] = dataset['quality'].map({
         3 : 0,
         4 : 0,
-        5 : 1,
+        5 : 0,
         6 : 1,
-        7 : 2,
-        8 : 2
+        7 : 1,
+        8 : 1
         })
 
 X = dataset.iloc[:, :11].values
@@ -39,7 +39,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 #Train a classifier
-classifier = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(16, 8), activation = 'relu', random_state = 0)
+classifier = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(8, 4, 4), activation = 'relu', random_state = 0)
 classifier.fit(X_train, y_train.ravel())
 
 #Predcitions

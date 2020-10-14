@@ -19,10 +19,10 @@ print(set(dataset['quality']))
 dataset['quality'] = dataset['quality'].map({
         3 : 0,
         4 : 0,
-        5 : 1,
+        5 : 0,
         6 : 1,
-        7 : 2,
-        8 : 2
+        7 : 1,
+        8 : 1
         })
 
 X = dataset.iloc[:, :11].values
@@ -39,8 +39,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, rand
 #X_test = scaler.transform(X_test)
 
 #Train a classifier
-classifier = DecisionTreeClassifier(criterion = 'entropy', random_state = 0, max_depth = 10)
-#classifier = DecisionTreeClassifier(criterion = 'gini', random_state = 0, max_depth = 6)
+classifier = DecisionTreeClassifier(criterion = 'entropy', random_state = 0)
+#classifier = DecisionTreeClassifier(criterion = 'entropy', random_state = 0, max_depth = 3)
+#classifier = DecisionTreeClassifier(criterion = 'gini', random_state = 0)
 classifier.fit(X_train, y_train)
 
 #Predcitions

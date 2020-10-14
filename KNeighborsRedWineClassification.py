@@ -19,10 +19,10 @@ print(set(dataset['quality']))
 dataset['quality'] = dataset['quality'].map({
         3 : 0,
         4 : 0,
-        5 : 1,
+        5 : 0,
         6 : 1,
-        7 : 2,
-        8 : 2
+        7 : 1,
+        8 : 1
         })
 
 X = dataset.iloc[:, :11].values

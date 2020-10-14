@@ -19,11 +19,11 @@ print(set(dataset['quality']))
 dataset['quality'] = dataset['quality'].map({
         3 : 0,
         4 : 0,
-        5 : 1,
+        5 : 0,
         6 : 1,
-        7 : 2,
-        8 : 2,
-        9 : 2
+        7 : 1,
+        8 : 1,
+        9 : 1
         })
 
 X = dataset.iloc[:, :11].values
@@ -40,7 +40,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, rand
 #X_test = scaler.transform(X_test)
 
 #Train a classifier
-classifier = KNeighborsClassifier(n_neighbors = 5, weights = 'distance')
+classifier = KNeighborsClassifier(n_neighbors = 3, weights = 'distance')
 classifier.fit(X_train, y_train.ravel())
 
 #Predcitions
